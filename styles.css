@@ -72,6 +72,21 @@ html[data-theme="light"] {
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+/* Anchor links account for sticky nav height — section doesn't hide under the bar */
+:target, section[id] { scroll-margin-top: 5rem; }
+
+/* Keyboard focus — subtle warm accent ring, matches palette */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* Don't double-ring on buttons that already handle state via opacity */
+.nav__theme:focus-visible,
+.nav__lang:focus-visible {
+  outline-offset: 4px;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -217,8 +232,8 @@ html[lang="pl"] .nav__lang [data-lang="pl"] {
   font-size: var(--fs-micro);
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: var(--fg-dim);
-  margin-bottom: var(--s-6);      /* 32 — tighter than before (was 64) */
+  color: var(--fg-muted);                /* bumped up from --fg-dim for WCAG AA on micro size */
+  margin-bottom: var(--s-6);             /* 32 — tighter than before (was 64) */
 }
 .eyebrow .idx { color: var(--fg-dim); margin-right: var(--s-3); }
 
@@ -278,38 +293,38 @@ html[lang="pl"] .nav__lang [data-lang="pl"] {
 @media (min-width: 860px) {
   .hero__portrait {
     display: block;
-    right: clamp(var(--s-4), 4vw, var(--s-10));
-    top: clamp(5rem, 10vh, 8rem);   /* aligns top of portrait near eyebrow / above H1 */
-    width: clamp(260px, 32vw, 380px);
+    right: clamp(var(--s-4), 3vw, var(--s-8));
+    top: clamp(7rem, 14vh, 11rem);     /* lower so head sits near lede, not in H1 */
+    width: clamp(200px, 22vw, 280px);  /* smaller — secondary element, not hero */
     height: auto;
   }
 }
 @media (min-width: 1200px) {
   .hero__portrait {
-    right: clamp(var(--s-8), 6vw, var(--s-14));
-    top: clamp(5rem, 9vh, 7rem);
-    width: clamp(320px, 30vw, 420px);
+    right: clamp(var(--s-6), 4vw, var(--s-10));
+    top: clamp(8rem, 13vh, 11rem);
+    width: clamp(240px, 22vw, 300px);
   }
 }
 .hero__portrait img {
   display: block;
   width: 100%;
   height: auto;
-  /* Warm monochrome pass so the cutout belongs to the page, not floats on top */
-  filter: grayscale(0.55) contrast(0.95) brightness(0.92) sepia(0.08);
-  opacity: 0.82;
+  /* Warm monochrome pass so the cutout reads as texture, not photograph */
+  filter: grayscale(0.7) contrast(0.9) brightness(0.95) sepia(0.1);
+  opacity: 0.55;
   mix-blend-mode: luminosity;
   transition: opacity 0.6s var(--ease), filter 0.6s var(--ease);
-  /* Feather the base of the cutout so it dissolves into the page */
-  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  /* Vignette top AND bottom — portrait emerges from and dissolves into page */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
 }
 html[data-theme="light"] .hero__portrait img {
-  filter: grayscale(0.5) contrast(0.98) brightness(1.04) sepia(0.05);
-  opacity: 0.72;
+  filter: grayscale(0.65) contrast(0.95) brightness(1.05) sepia(0.06);
+  opacity: 0.45;
   mix-blend-mode: multiply;
 }
-.hero__portrait:hover img { opacity: 0.95; }
+.hero__portrait:hover img { opacity: 0.8; }
 
 .hero__title {
   font-family: var(--font-serif);
@@ -317,8 +332,12 @@ html[data-theme="light"] .hero__portrait img {
   font-size: var(--fs-hero);
   line-height: var(--lh-tight);
   letter-spacing: -0.035em;
-  max-width: 18ch;
-  margin-bottom: var(--s-6);       /* 32 — down from 40 */
+  /* Hard-cap so H1 never runs into portrait column on wide screens */
+  max-width: min(18ch, 62%);
+  margin-bottom: var(--s-6);
+}
+@media (max-width: 859px) {
+  .hero__title { max-width: 18ch; }  /* no portrait on mobile — reclaim full width */
 }
 .hero__title em {
   font-style: italic;
