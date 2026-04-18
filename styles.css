@@ -168,23 +168,30 @@ ol, ul { padding: 0; list-style: none; }
 @media (min-width: 720px) { .nav__links { display: flex; } }
 
 .nav__theme {
-  width: 28px; height: 28px;
+  width: 36px; height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: opacity 0.25s var(--ease);
-  opacity: 0.55;
+  color: var(--fg-muted);
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease), transform 0.4s var(--ease);
+  position: relative;
 }
-.nav__theme:hover { opacity: 1; }
+.nav__theme:hover {
+  color: var(--fg);
+  background: color-mix(in oklab, var(--fg) 6%, transparent);
+}
 .nav__theme-icon {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--fg);
-  box-shadow: inset -3px -2px 0 0 var(--bg);
-  transition: all 0.4s var(--ease);
+  width: 18px; height: 18px;
+  position: absolute;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
 }
-html[data-theme="light"] .nav__theme-icon { box-shadow: inset 3px 2px 0 0 var(--bg); }
+/* In dark mode: show SUN (the destination if user clicks) */
+html[data-theme="dark"] .nav__theme-icon--sun  { opacity: 1; transform: rotate(0) scale(1); }
+html[data-theme="dark"] .nav__theme-icon--moon { opacity: 0; transform: rotate(-45deg) scale(0.6); }
+/* In light mode: show MOON */
+html[data-theme="light"] .nav__theme-icon--sun  { opacity: 0; transform: rotate(45deg) scale(0.6); }
+html[data-theme="light"] .nav__theme-icon--moon { opacity: 1; transform: rotate(0) scale(1); }
 
 /* Language toggle + actions cluster */
 .nav__actions {
