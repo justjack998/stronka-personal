@@ -294,37 +294,37 @@ html[lang="pl"] .nav__lang [data-lang="pl"] {
   .hero__portrait {
     display: block;
     right: clamp(var(--s-4), 3vw, var(--s-8));
-    top: clamp(7rem, 14vh, 11rem);     /* lower so head sits near lede, not in H1 */
-    width: clamp(200px, 22vw, 280px);  /* smaller — secondary element, not hero */
+    top: clamp(6rem, 12vh, 9rem);
+    width: clamp(220px, 24vw, 300px);
     height: auto;
   }
 }
 @media (min-width: 1200px) {
   .hero__portrait {
     right: clamp(var(--s-6), 4vw, var(--s-10));
-    top: clamp(8rem, 13vh, 11rem);
-    width: clamp(240px, 22vw, 300px);
+    top: clamp(6rem, 11vh, 9rem);
+    width: clamp(260px, 24vw, 340px);
   }
 }
 .hero__portrait img {
   display: block;
   width: 100%;
   height: auto;
-  /* Warm monochrome pass so the cutout reads as texture, not photograph */
-  filter: grayscale(0.7) contrast(0.9) brightness(0.95) sepia(0.1);
-  opacity: 0.55;
+  /* Restrained monochrome — warm, but recognizably a photograph */
+  filter: grayscale(0.4) contrast(0.95) brightness(0.98) sepia(0.05);
+  opacity: 0.75;
   mix-blend-mode: luminosity;
   transition: opacity 0.6s var(--ease), filter 0.6s var(--ease);
-  /* Vignette top AND bottom — portrait emerges from and dissolves into page */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
+  /* Only soften the very bottom edge — no top fade, no funeral vibe */
+  -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
 }
 html[data-theme="light"] .hero__portrait img {
-  filter: grayscale(0.65) contrast(0.95) brightness(1.05) sepia(0.06);
-  opacity: 0.45;
+  filter: grayscale(0.35) contrast(1) brightness(1.02) sepia(0.03);
+  opacity: 0.7;
   mix-blend-mode: multiply;
 }
-.hero__portrait:hover img { opacity: 0.8; }
+.hero__portrait:hover img { opacity: 0.9; }
 
 .hero__title {
   font-family: var(--font-serif);
@@ -332,9 +332,11 @@ html[data-theme="light"] .hero__portrait img {
   font-size: var(--fs-hero);
   line-height: var(--lh-tight);
   letter-spacing: -0.035em;
-  /* Hard-cap so H1 never runs into portrait column on wide screens */
-  max-width: min(18ch, 62%);
+  /* Gentle overlap — text extends past portrait's left edge by a few characters */
+  max-width: min(18ch, 72%);
   margin-bottom: var(--s-6);
+  position: relative;
+  z-index: 2;
 }
 @media (max-width: 859px) {
   .hero__title { max-width: 18ch; }  /* no portrait on mobile — reclaim full width */
