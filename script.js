@@ -258,6 +258,10 @@
   });
 
   /* ---------- Language ---------- */
+  // Feature flag — flip to `true` to re-enable PL/EN switcher.
+  // PL translations and data-i18n markup stay intact regardless.
+  const LANG_ENABLED = false;
+
   function applyLang(lang) {
     if (!i18n[lang]) lang = "en";
     root.setAttribute("lang", lang);
@@ -282,17 +286,23 @@
     }
   }
 
-  const savedLang = localStorage.getItem(LANG_KEY);
-  const browserLang = (navigator.language || "en").toLowerCase().startsWith("pl") ? "pl" : "en";
-  const initialLang = savedLang || browserLang;
-  applyLang(initialLang);
+  if (LANG_ENABLED) {
+    const savedLang = localStorage.getItem(LANG_KEY);
+    const browserLang = (navigator.language || "en").toLowerCase().startsWith("pl") ? "pl" : "en";
+    const initialLang = savedLang || browserLang;
+    applyLang(initialLang);
 
-  langBtn?.addEventListener("click", () => {
-    const current = root.getAttribute("lang") === "pl" ? "pl" : "en";
-    const next = current === "en" ? "pl" : "en";
-    applyLang(next);
-    try { localStorage.setItem(LANG_KEY, next); } catch (_) {}
-  });
+    langBtn?.addEventListener("click", () => {
+      const current = root.getAttribute("lang") === "pl" ? "pl" : "en";
+      const next = current === "en" ? "pl" : "en";
+      applyLang(next);
+      try { localStorage.setItem(LANG_KEY, next); } catch (_) {}
+    });
+  } else {
+    // Locked to English — ignore saved preference and hide the toggle.
+    applyLang("en");
+    if (langBtn) langBtn.hidden = true;
+  }
 
   /* ---------- Scroll reveal ---------- */
   const reveals = document.querySelectorAll("[data-reveal]");
