@@ -1,560 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jack Matuszewski — Performance marketing strategist and board advisor. Profitable growth built on incrementality, POAS, and payback." />
-  <title>Jack Matuszewski — Profit-led growth, no fluff.</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacek Matuszewski — Growth & Data Operator</title>
+<meta name="description" content="Growth and data operator for DTC brands. I scale paid media on contribution margin and incremental customers, not platform ROAS. Incrementality, nCAC, decision systems.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jmatuszewski.digital/">
+<meta property="og:title" content="Jacek Matuszewski — Growth & Data Operator">
+<meta property="og:description" content="I scale DTC brands on contribution margin and incremental customers, not platform ROAS. Proven with geo holdouts.">
+<meta property="og:image" content="https://jmatuszewski.digital/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jacek Matuszewski — Growth & Data Operator">
+<meta name="twitter:description" content="I scale DTC brands on contribution margin and incremental customers, not platform ROAS.">
+<meta name="twitter:image" content="https://jmatuszewski.digital/og-image.png">
+<style>
+  :root{
+    --bg:#060708; --ink:#f3f4f5; --mut:#6b7079; --mut2:#41454c;
+    --line:#16181c; --accent:#5b8cff; --accent-dim:rgba(91,140,255,.55);
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+  .acc{color:var(--accent)}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  /* top bar */
+  .top{position:fixed;top:0;left:0;right:0;z-index:40;height:60px;
+    background:linear-gradient(180deg,rgba(6,7,8,.9),rgba(6,7,8,0));backdrop-filter:blur(6px)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.05em;font-weight:600}
+  .brand b{color:var(--accent)}
+  .top-right{display:flex;align-items:center;gap:22px}
+  .avail{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  .avail .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#39d39a;margin-right:7px;
+    box-shadow:0 0 0 0 rgba(57,211,154,.6);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(57,211,154,.5)}70%{box-shadow:0 0 0 5px rgba(57,211,154,0)}100%{box-shadow:0 0 0 0 rgba(57,211,154,0)}}
+  .pill{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--line);padding:9px 14px;color:var(--mut);transition:.2s}
+  .pill:hover{border-color:var(--accent);color:var(--ink)}
+  @media(max-width:600px){.avail{display:none}}
 
-  <link rel="stylesheet" href="styles.css" />
+  /* hero */
+  .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;
+    padding:90px 0 40px}
+  .hero-l .lbl{margin-bottom:26px}
+  .hero h1{font-size:clamp(34px,5vw,62px);line-height:1.04;letter-spacing:-.025em;font-weight:600;max-width:13ch}
+  .hero h1 .sys{color:var(--accent)}
+  .hero h1 .st{color:var(--mut2);text-decoration:line-through;text-decoration-thickness:1.5px}
+  .hero p{margin-top:26px;color:var(--mut);font-size:clamp(14px,1.5vw,17px);max-width:46ch;line-height:1.65}
+  .hero p b{color:var(--ink);font-weight:400}
+  .hero .cta{margin-top:36px;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:15px 26px;background:var(--accent);
+    color:#04122f;font-weight:600;transition:.2s}
+  .hero .cta:hover{filter:brightness(1.12)}
+  .globe-box{position:relative;aspect-ratio:1;width:100%;max-width:560px;justify-self:center}
+  #globe{width:100%;height:100%;display:block}
+  .globe-cap{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut2)}
+  @media(max-width:840px){
+    .hero{grid-template-columns:1fr;text-align:left}
+    .globe-box{max-width:340px;order:-1;margin-bottom:10px}
+  }
+
+  section{padding:110px 0;position:relative;z-index:2}
+  .seclbl{display:flex;align-items:center;gap:14px;margin-bottom:54px}
+  .seclbl .n{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.2em}
+  .seclbl .t{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+  .seclbl .r{flex:1;height:1px;background:var(--line)}
+
+  /* doctrine minimal */
+  .doc{display:flex;flex-direction:column}
+  .doc-i{display:flex;gap:28px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line)}
+  .doc-i:last-child{border-bottom:1px solid var(--line)}
+  .doc-i .dn{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:34px}
+  .doc-i .dt{font-size:clamp(18px,2.3vw,26px);font-weight:500;letter-spacing:-.01em}
+  .doc-i .dt em{font-style:normal;color:var(--mut2)}
+  .doc-i .dd{margin-left:auto;color:var(--mut);font-size:13.5px;max-width:38ch;text-align:right}
+  @media(max-width:760px){.doc-i{flex-wrap:wrap;gap:10px 28px}.doc-i .dd{margin-left:62px;text-align:left}}
+
+  /* proof + charts */
+  .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
+  .pf .big{font-size:clamp(46px,6vw,72px);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .pf .lab{margin-top:16px;font-size:14.5px;color:var(--ink);max-width:30ch}
+  .pf .sub{margin-top:7px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
+  .pf .chart{margin-top:24px;height:60px}
+  .bars{display:flex;align-items:flex-end;gap:14px;height:60px}
+  .bar{width:38px;background:var(--line);position:relative;height:8px;transition:height 1.1s cubic-bezier(.2,.7,.2,1)}
+  .bar.b1{background:var(--mut2)} .bar.b2{background:var(--accent)}
+  .bar span{position:absolute;top:-16px;left:0;font-family:var(--mono);font-size:9px;color:var(--mut)}
+  svg .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.6s ease}
+  .in svg .draw{stroke-dashoffset:0}
+  .in .bar.b1{height:56px} .in .bar.b2{height:37px}
+  @media(max-width:760px){.proof{grid-template-columns:1fr;gap:54px}}
+
+  /* live monitor */
+  .monitor{border:1px solid var(--line);background:#0a0c0e;padding:0}
+  .mon-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
+  .mon-head .mono{font-size:10px}
+  .mon-val{font-family:var(--mono);font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
+  #pulse{display:block;width:100%;height:160px}
+  .mon-foot{padding:16px 22px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
+  .mon-foot b{color:var(--ink);font-weight:400}
+
+  /* capabilities minimal */
+  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 60px}
+  .cap{padding:24px 0;border-top:1px solid var(--line)}
+  .cap h4{font-size:18px;font-weight:500}
+  .cap p{margin-top:10px;color:var(--mut);font-size:14px;line-height:1.6;max-width:42ch}
+  @media(max-width:680px){.caps{grid-template-columns:1fr}}
+
+  /* contact */
+  .contact{padding:130px 0}
+  .contact h2{font-size:clamp(34px,6vw,66px);font-weight:600;letter-spacing:-.025em;line-height:1.03}
+  .contact p{margin-top:24px;color:var(--mut);font-size:17px;max-width:50ch;line-height:1.6}
+  .mailbtn{display:inline-block;margin-top:38px;font-family:var(--mono);font-size:clamp(14px,2vw,19px);
+    color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:5px;transition:.2s}
+  .mailbtn:hover{border-color:var(--accent)}
+  .terms-line{margin-top:46px;display:flex;gap:30px;flex-wrap:wrap}
+  .terms-line div{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
+  .terms-line b{color:var(--mut)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer .mono{font-size:10px;color:var(--mut2)}
+
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.avail .dot{animation:none}}
+</style>
 </head>
 <body>
 
-  <!-- LOADER -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__inner">
-      <span class="loader__name">JACK MATUSZEWSKI</span>
-      <span class="loader__count" data-loader-count>00</span>
+<div class="top">
+  <div class="wrap">
+    <div class="brand">J<b>/</b>MATUSZEWSKI</div>
+    <div class="top-right">
+      <div class="avail"><span class="dot"></span>Available Q3 2026 · 2 slots</div>
+      <a href="#contact" class="pill">Contact</a>
     </div>
-    <div class="loader__bar"></div>
   </div>
+</div>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor cursor--dot" aria-hidden="true"></div>
-  <div class="cursor cursor--ring" aria-hidden="true">
-    <span class="cursor__label" data-cursor-label></span>
+<header class="hero wrap">
+  <div class="hero-l">
+    <div class="lbl mono rv">Growth &amp; Data Operator</div>
+    <h1 class="rv">Most brands scale <span class="st">spend</span>. I scale the <span class="sys">system</span> that makes it profitable.</h1>
+    <p class="rv">Paid media that grows on <b>contribution margin and incremental customers</b>, not platform ROAS. I find the growth your dashboards are sitting on, prove it with a holdout, and hand your team the system that runs it.</p>
+    <a href="#contact" class="cta rv">Book the diagnostic →</a>
   </div>
-
-  <!-- SCROLL PROGRESS -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-
-  <!-- AURORA -->
-  <div class="aurora" aria-hidden="true">
-    <div class="aurora__blob aurora__blob--1"></div>
-    <div class="aurora__blob aurora__blob--2"></div>
-    <div class="aurora__blob aurora__blob--3"></div>
-    <div class="aurora__blob aurora__blob--4"></div>
+  <div class="globe-box rv">
+    <canvas id="globe"></canvas>
+    <div class="globe-cap">Decisions, modeled across markets</div>
   </div>
+</header>
 
-  <!-- TOP STATUS BAR -->
-  <div class="topbar" aria-hidden="false">
-    <span class="topbar__status">
-      <span class="topbar__dot"></span>
-      <span>Available — Q3 2026</span>
-    </span>
-    <span class="topbar__asterisk" data-asterisk aria-hidden="true">✺</span>
-    <span class="topbar__clock">
-      <span class="topbar__clock-label">Warsaw</span>
-      <span class="topbar__clock-time" data-clock>00:00:00</span>
-    </span>
-  </div>
-
-  <!-- NAV -->
-  <header class="nav">
-    <a href="#top" class="nav__mark" aria-label="Home">
-      <span class="nav__mark-text">Jack<sup>*</sup></span>
-    </a>
-
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#what" data-nav-link>What</a>
-      <a href="#how" data-nav-link>How</a>
-      <a href="#work" data-nav-link>Work</a>
-      <a href="#approach" data-nav-link>Approach</a>
-      <a href="#contact" data-nav-link>Contact</a>
-    </nav>
-
-    <a href="#contact" class="nav__cta magnetic" data-cursor="send">
-      <span>Let's talk</span>
-      <span class="nav__cta-arrow" aria-hidden="true">→</span>
-    </a>
-  </header>
-
-  <main id="top">
-
-    <!-- HERO -->
-    <section class="hero section" data-reveal data-section="hero">
-      <p class="eyebrow hero__eyebrow"><span class="idx" data-scramble>01</span> / Operator · Board Advisor · Warsaw</p>
-
-      <h1 class="hero__title" data-split="words">
-        Most brands scale spend.<br />
-        I scale the <em>system</em> that makes it<br />
-        <em class="hero__title-2">profitable.</em>
-      </h1>
-
-      <div class="hero__bottom">
-        <p class="hero__lede">
-          Fifteen years inside DTC growth — Meta, Google, programmatic, and the measurement
-          stack underneath them. Margin-weighted bidding, cohort retention curves, incrementality
-          testing. New customer economics that pay back inside your runway, and scaling decisions
-          that show up in the P&amp;L, not just the dashboard.
-        </p>
-
-        <div class="hero__tags">
-          <span class="tag tag--coral">Performance</span>
-          <span class="tag tag--blue">Measurement</span>
-          <span class="tag tag--lime">Strategy</span>
-          <span class="tag tag--pink">Boards</span>
-        </div>
-      </div>
-
-      <figure class="hero__portrait" aria-hidden="true" data-parallax="0.18" data-cursor="view">
-        <img src="zdj.png" alt="" loading="eager" decoding="async" />
-      </figure>
-
-      <!-- Big background name -->
-      <div class="hero__bigname" aria-hidden="true">
-        <span>Jack</span><span class="hero__bigname-em">Matuszewski</span>
-      </div>
-
-      <div class="hero__cue" aria-hidden="true">
-        <span>Scroll</span>
-        <span class="hero__cue-line"></span>
-      </div>
-    </section>
-
-    <!-- TICKER MARQUEE — right after hero -->
-    <section class="ticker" aria-hidden="true">
-      <div class="ticker__track" data-marquee-track>
-        <span class="ticker__item">Profit, not ROAS</span>
-        <span class="ticker__sep">✺</span>
-        <span class="ticker__item">Incrementality &gt; Attribution</span>
-        <span class="ticker__sep">✺</span>
-        <span class="ticker__item">Cohorts &gt; Averages</span>
-        <span class="ticker__sep">✺</span>
-        <span class="ticker__item">Systems &gt; Tactics</span>
-        <span class="ticker__sep">✺</span>
-        <span class="ticker__item">Demand &gt; Hacks</span>
-        <span class="ticker__sep">✺</span>
-      </div>
-    </section>
-
-    <!-- WHAT I DO -->
-    <section id="what" class="section" data-reveal data-section-index="02">
-      <p class="eyebrow"><span class="idx" data-scramble>02</span> / What I Do</p>
-
-      <h2 class="section__title" data-split="words">What the <em>work</em> looks like.</h2>
-
-      <div class="grid grid--four" data-reveal-stagger>
-        <article class="card card--coral">
-          <span class="card__num">01</span>
-          <h3 class="card__title">Fix the Measurement Layer</h3>
-          <p class="card__body">
-            Most teams make growth decisions on data that was never built to answer business questions.
-            Pixel attribution, platform reports, agency dashboards — useful for running campaigns,
-            useless for running a P&amp;L. I rebuild tracking, attribution, and the data pipeline underneath
-            so the number the CEO sees matches the number in the bank.
-          </p>
-          <div class="card__tags">
-            <span class="tag tag--ghost">GA4</span>
-            <span class="tag tag--ghost">CAPI</span>
-            <span class="tag tag--ghost">Warehouse</span>
-          </div>
-        </article>
-
-        <article class="card card--blue">
-          <span class="card__num">02</span>
-          <h3 class="card__title">Rebuild Paid Around Business Metrics</h3>
-          <p class="card__body">
-            ROAS is a reporting metric. Profit is a business outcome. I move the bidding surface from
-            platform-reported revenue to nCAC, POAS, and payback period. The platforms keep working
-            the same way. What changes is what they're told to optimize for — and which SKUs, cohorts,
-            and channels survive the next quarter.
-          </p>
-          <div class="card__tags">
-            <span class="tag tag--ghost">POAS</span>
-            <span class="tag tag--ghost">nCAC</span>
-            <span class="tag tag--ghost">Payback</span>
-          </div>
-        </article>
-
-        <article class="card card--lime">
-          <span class="card__num">03</span>
-          <h3 class="card__title">Scale Without Breaking Unit Economics</h3>
-          <p class="card__body">
-            New customer volume is easy to buy. New customer volume that pays back inside your runway
-            is harder. I separate the two — incrementality by channel, margin by SKU, retention by
-            cohort — and scale only where those three agree. Growth that doesn't compound is just a
-            burn rate with better PR.
-          </p>
-          <div class="card__tags">
-            <span class="tag tag--ghost">Geo-lift</span>
-            <span class="tag tag--ghost">Cohorts</span>
-            <span class="tag tag--ghost">Margin</span>
-          </div>
-        </article>
-
-        <article class="card card--pink">
-          <span class="card__num">04</span>
-          <h3 class="card__title">Board &amp; Advisory</h3>
-          <p class="card__body">
-            Two board seats, three advisory engagements. The job is holding growth to the same
-            standard as finance — same rigor, same cadence, same willingness to say no to the CMO.
-            One day a month, quarterly packs, zero pitch decks.
-          </p>
-          <div class="card__tags">
-            <span class="tag tag--ghost">Strategy</span>
-            <span class="tag tag--ghost">Reporting</span>
-            <span class="tag tag--ghost">Governance</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- HOW I THINK -->
-    <section id="how" class="section" data-reveal data-section-index="03">
-      <p class="eyebrow"><span class="idx" data-scramble>03</span> / How I Think</p>
-
-      <h2 class="section__title" data-split="words">What I've stopped <em>arguing</em> about.</h2>
-
-      <p class="section__lede">
-        Most marketing decisions are made on data that was never meant to answer business questions.
-        Five principles I've defended against real P&amp;Ls — and against the agencies that push back on them.
-      </p>
-
-      <ol class="principles" data-reveal-stagger>
-        <li class="principle">
-          <span class="principle__num">I</span>
-          <div>
-            <h3 class="principle__title">Incrementality <em>over</em> attribution.</h3>
-            <p class="principle__body">
-              If a channel doesn't generate incremental revenue, it's noise — regardless of what the platform reports.
-              Attribution tells you which touchpoint got credit. Incrementality tells you which spend you could kill
-              tomorrow without losing revenue. In my experience the gap between those two numbers is 30 to 50 percent.
-              On brand search and retargeting, routinely past 70. Geo-lift, PSA tests, CUPED on onsite data — pick one
-              and run it quarterly. The first cycle pays for the engagement.
-            </p>
-          </div>
-        </li>
-
-        <li class="principle">
-          <span class="principle__num">II</span>
-          <div>
-            <h3 class="principle__title">Business metrics <em>over</em> platform metrics.</h3>
-            <p class="principle__body">
-              ROAS is a reporting metric. Profit is a business outcome. They are not the same number and they rarely
-              move together. I optimize to POAS, nCAC, and payback — not to whatever the platform happens to export.
-              The mechanic is unglamorous: pull COGS and fulfilment from the ERP, compute net contribution per line item,
-              push it into the conversion API as the value parameter. Two weeks of engineering. Not a strategy.
-            </p>
-          </div>
-        </li>
-
-        <li class="principle">
-          <span class="principle__num">III</span>
-          <div>
-            <h3 class="principle__title">Cohorts <em>over</em> averages.</h3>
-            <p class="principle__body">
-              Blended performance is an average of averages. It hides more than it reveals.
-              Paid cohorts almost always retain worse than organic — often 30 to 40 percent worse by month twelve.
-              "LTV to CAC of three" is a number without a denominator until you say what horizon it's measured over
-              and which acquisition source produced it. I build retention decay by cohort month and channel,
-              then compute payback against the twelve-month curve — not the theoretical lifetime the spreadsheet suggests.
-            </p>
-          </div>
-        </li>
-
-        <li class="principle">
-          <span class="principle__num">IV</span>
-          <div>
-            <h3 class="principle__title">Demand <em>over</em> hacks.</h3>
-            <p class="principle__body">
-              You can't scale what doesn't exist. Most "growth hacking" is harvesting demand that was already there
-              and claiming credit for the conversion. Real scaling means knowing which demand is latent, which is declining,
-              and which you'll have to build. Search volume, category growth, share of voice, purchase frequency by cohort —
-              those tell you whether the ceiling is actually where you think it is. Spending harder against a shrinking pool
-              isn't a strategy. It's a burn rate in disguise.
-            </p>
-          </div>
-        </li>
-
-        <li class="principle">
-          <span class="principle__num">V</span>
-          <div>
-            <h3 class="principle__title">Systems <em>over</em> tactics.</h3>
-            <p class="principle__body">
-              Campaigns don't scale businesses. Systems do.
-              A tactic is something that worked once and gets retired. A system is a measurement stack, a decision cadence,
-              and a reallocation rule that keeps working after I leave. I don't hand over playbooks of what to do.
-              I hand over rules for how to decide — which is the only thing that compounds.
-            </p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- SELECTED WORK -->
-    <section id="work" class="section" data-reveal data-section-index="04">
-      <p class="eyebrow"><span class="idx" data-scramble>04</span> / Selected Work</p>
-
-      <h2 class="section__title" data-split="words">A few worth <em>showing.</em></h2>
-      <p class="section__lede">
-        Names under NDA. Numbers are audited — annualized where needed, measured against holdout where the design allowed it.
-        Where it didn't, I say so.
-      </p>
-
-      <article class="case" data-cursor="case">
-        <header class="case__head">
-          <div>
-            <p class="case__kicker">DTC Footwear · $60M revenue · US</p>
-            <h3 class="case__title" data-split="words">Rebuilt acquisition around <em>new customer economics</em>, not blended ROAS.</h3>
-          </div>
-          <p class="case__role">Fractional Head of Growth · 9 months</p>
-        </header>
-
-        <p class="case__summary">
-          Blended ROAS looked fine. New customer acquisition had quietly flatlined for four quarters while the platform kept
-          serving ads to existing customers who would have bought anyway. We separated new-customer conversions at the pixel layer,
-          switched bidding to nCAC and first-order POAS, and rebuilt prospecting creative against product-level contribution margin.
-          Reported ROAS dropped. Profit didn't. That's the distinction the board eventually cared about.
-        </p>
-
-        <div class="metrics" data-reveal-stagger>
-          <div class="metric">
-            <span class="metric__label">New customer volume</span>
-            <span class="metric__value" data-counter="41" data-prefix="+" data-suffix="%">+41%</span>
-            <span class="metric__delta">YoY, flat media spend</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">nCAC</span>
-            <span class="metric__value" data-counter="23" data-prefix="−" data-suffix="%">−23%</span>
-            <span class="metric__delta">Blended, all channels</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">First-order POAS</span>
-            <span class="metric__value" data-counter="1.8" data-decimals="1" data-suffix="x">1.8x</span>
-            <span class="metric__delta">From 0.9x</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Blended ROAS</span>
-            <span class="metric__value" data-counter="14" data-prefix="−" data-suffix="%">−14%</span>
-            <span class="metric__delta">Intentionally</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" data-cursor="case">
-        <header class="case__head">
-          <div>
-            <p class="case__kicker">DTC Home Goods · €25M revenue · 6 markets</p>
-            <h3 class="case__title" data-split="words">Three reports, three truths. We replaced them with <em>one.</em></h3>
-          </div>
-          <p class="case__role">Strategy Lead · 6 months</p>
-        </header>
-
-        <p class="case__summary">
-          Platform reports said one number. The warehouse said another. Finance said a third. Every weekly meeting started with reconciliation
-          and ended without a decision. We built a cohort-based LTV forecasting layer on top of the warehouse, calibrated against twelve months
-          of closed finance data, and made it the only source the board used. Decisions started getting made in the first half of the meeting.
-        </p>
-
-        <div class="metrics" data-reveal-stagger>
-          <div class="metric">
-            <span class="metric__label">Forecast accuracy</span>
-            <span class="metric__value" data-counter="6" data-prefix="±" data-suffix="%">±6%</span>
-            <span class="metric__delta">90-day horizon</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Reporting sources</span>
-            <span class="metric__value">9 → 1</span>
-            <span class="metric__delta">Board pack</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Time to decision</span>
-            <span class="metric__value" data-counter="62" data-prefix="−" data-suffix="%">−62%</span>
-            <span class="metric__delta">Weekly growth meeting</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Planning cadence</span>
-            <span class="metric__value">Q → Mo</span>
-            <span class="metric__delta">With confidence</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" data-cursor="case">
-        <header class="case__head">
-          <div>
-            <p class="case__kicker">DTC Apparel · €80M revenue · 9 markets</p>
-            <h3 class="case__title" data-split="words">Moved creative from <em>channel-led</em> to <em>demand-led</em> testing.</h3>
-          </div>
-          <p class="case__role">Advisor · 8 months</p>
-        </header>
-
-        <p class="case__summary">
-          Forty-plus creative assets a month, organized by platform. High volume, low signal, no learning carrying across channels.
-          We restructured testing around demand themes instead: audience × angle × product, as a three-way matrix with enough power per cell
-          to actually read the result. Winner rate roughly doubled. More importantly, the team could explain why a winner won —
-          which is the only way the knowledge compounds.
-        </p>
-
-        <div class="metrics" data-reveal-stagger>
-          <div class="metric">
-            <span class="metric__label">Winner rate</span>
-            <span class="metric__value" data-counter="2.1" data-decimals="1" data-suffix="x">2.1x</span>
-            <span class="metric__delta">Per test cycle</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Cost per new winner</span>
-            <span class="metric__value" data-counter="48" data-prefix="−" data-suffix="%">−48%</span>
-            <span class="metric__delta">Production + media</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">CPA on top concepts</span>
-            <span class="metric__value" data-counter="27" data-prefix="−" data-suffix="%">−27%</span>
-            <span class="metric__delta">Incrementality-adjusted</span>
-          </div>
-          <div class="metric">
-            <span class="metric__label">Cross-channel carry</span>
-            <span class="metric__value">3 → 1</span>
-            <span class="metric__delta">Teams, not silos</span>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- BIG MARQUEE -->
-    <section class="marquee" aria-hidden="true" data-reveal>
-      <div class="marquee__track" data-marquee-track>
-        <span class="marquee__item">Incrementality<span class="marquee__dot"></span></span>
-        <span class="marquee__item">POAS<span class="marquee__dot"></span></span>
-        <span class="marquee__item">nCAC<span class="marquee__dot"></span></span>
-        <span class="marquee__item"><em>Payback</em><span class="marquee__dot"></span></span>
-        <span class="marquee__item">Cohort retention<span class="marquee__dot"></span></span>
-        <span class="marquee__item">Margin-weighted<span class="marquee__dot"></span></span>
-        <span class="marquee__item"><em>Geo-lift</em><span class="marquee__dot"></span></span>
-        <span class="marquee__item">CUPED<span class="marquee__dot"></span></span>
-      </div>
-      <div class="marquee__track marquee__track--reverse" data-marquee-track>
-        <span class="marquee__item marquee__item--ghost">Systems over tactics<span class="marquee__dot"></span></span>
-        <span class="marquee__item marquee__item--ghost">Cohorts over averages<span class="marquee__dot"></span></span>
-        <span class="marquee__item marquee__item--ghost">Demand over hacks<span class="marquee__dot"></span></span>
-        <span class="marquee__item marquee__item--ghost">Profit over ROAS<span class="marquee__dot"></span></span>
-      </div>
-    </section>
-
-    <!-- APPROACH -->
-    <section id="approach" class="section" data-reveal data-section-index="05">
-      <p class="eyebrow"><span class="idx" data-scramble>05</span> / Approach</p>
-
-      <h2 class="section__title" data-split="words">Not the ads guy. <em>The one behind him.</em></h2>
-
-      <p class="section__lede">
-        I work at the intersection of marketing, data, and business strategy. The deliverable isn't a campaign plan.
-        It's a decision system your team runs after I'm gone.
-      </p>
-
-      <div class="phases" data-reveal-stagger>
-        <div class="phase">
-          <p class="phase__num">Phase 01</p>
-          <h3 class="phase__title">Audit how growth is actually measured</h3>
-          <p class="phase__body">
-            Two weeks in the data. Account access, margin by SKU, the gap between what the platforms say and what finance actually books.
-            End of week two I either have a thesis worth acting on — a specific constraint costing you money —
-            or I tell you there isn't one and we both move on. That happens about one time in six. Fee is fixed either way.
-          </p>
-          <p class="phase__meta">Fixed fee · 2 weeks</p>
-        </div>
-
-        <div class="phase">
-          <p class="phase__num">Phase 02</p>
-          <h3 class="phase__title">Design the decision system</h3>
-          <p class="phase__body">
-            Three to four weeks. Written target economics: POAS floor per channel, payback horizon, a six-month test calendar,
-            what we're killing and why. Signed by CEO and CFO — not just the CMO. Most "growth strategies" are activity plans.
-            This one is a rule: when X happens, we do Y. Finance signs it because it maps to the P&amp;L they're accountable for.
-          </p>
-          <p class="phase__meta">Fixed fee · 3–4 weeks</p>
-        </div>
-
-        <div class="phase">
-          <p class="phase__num">Phase 03</p>
-          <h3 class="phase__title">Implement alongside your team</h3>
-          <p class="phase__body">
-            Hands in the accounts, not adjacent to them. Bidding restructured, conversion API rebuilt with margin data,
-            cohort LTV layer calibrated, weekly reporting mapped to board metrics. Always done with your team, never around them.
-            I don't build systems your team can't operate — that's how good work quietly dies the quarter after I leave.
-          </p>
-          <p class="phase__meta">Retainer · 3–9 months</p>
-        </div>
-
-        <div class="phase">
-          <p class="phase__num">Phase 04</p>
-          <h3 class="phase__title">Hand it over and step back</h3>
-          <p class="phase__body">
-            Playbook written, internal owner trained, quarterly check-in set. My goal is to make the retainer unnecessary.
-            About half my clients keep me on advisory afterward. The other half don't need to. Both outcomes are fine.
-            What I won't do is stay on to justify a retainer.
-          </p>
-          <p class="phase__meta">Advisory · ongoing or not</p>
-        </div>
-      </div>
-
-      <div class="approach__rules">
-        <p class="approach__rule"><span class="approach__bullet">→</span> No retainers without a thesis I'd bet my own money on.</p>
-        <p class="approach__rule"><span class="approach__bullet">→</span> No engagements below €500k annual media. Nothing to optimize.</p>
-        <p class="approach__rule"><span class="approach__bullet">→</span> No agency kickbacks, referral fees, or rev-share with platforms.</p>
-        <p class="approach__rule"><span class="approach__bullet">→</span> Direct communication, fast iteration, decisions backed by data — not opinions.</p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section section--contact" data-reveal data-section-index="06">
-      <p class="eyebrow"><span class="idx" data-scramble>06</span> / Contact</p>
-
-      <h2 class="contact__title" data-split="words">
-        Most brands don't have a scaling problem.<br />
-        They have a <em>measurement problem</em> disguised as one.
-      </h2>
-
-      <p class="contact__note">
-        Best fit: DTC brands past early traction, teams where measurement and profitability numbers don't agree,
-        and situations where spending harder has stopped improving the outcome.
-        Email is best. Tell me what's broken and what you've already tried. Bring the P&amp;L,
-        or a rough approximation of it.
-      </p>
-
-      <div class="contact__ctas" data-reveal-stagger>
-        <a class="btn btn--primary magnetic" href="mailto:jacek.matuszewski@mta.digital" data-cursor="send">
-          <span>Email me</span>
-          <span class="btn__arrow">→</span>
-        </a>
-        <a class="btn btn--ghost magnetic" href="https://linkedin.com" target="_blank" rel="noopener" data-cursor="open">
-          <span>LinkedIn</span>
-          <span class="btn__arrow">↗</span>
-        </a>
-      </div>
-
-      <div class="contact__meta">
-        <div class="contact__item">
-          <span class="contact__label">Email</span>
-          <span class="contact__value">jacek.matuszewski@mta.digital</span>
-        </div>
-        <div class="contact__item">
-          <span class="contact__label">LinkedIn</span>
-          <span class="contact__value">/in/jmatuszewski</span>
-        </div>
-        <div class="contact__item">
-          <span class="contact__label">Next opening</span>
-          <span class="contact__value">Q3 2026 · 2 slots</span>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="footer__row">
-      <span class="footer__mark">JM<sup>*</sup></span>
-      <span class="footer__copy">© 2026 Jack Matuszewski · Warsaw</span>
-      <span class="footer__time"><span data-clock>00:00:00</span> CET</span>
+<section id="doctrine">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">01</span><span class="t">Operating Doctrine</span><span class="r"></span></div>
+    <div class="doc">
+      <div class="doc-i rv"><span class="dn">01</span><span class="dt">Incrementality <em>over attribution</em></span><span class="dd">If it does not survive a geo holdout, it did not happen.</span></div>
+      <div class="doc-i rv"><span class="dn">02</span><span class="dt">Contribution margin <em>over ROAS</em></span><span class="dd">Targets from your unit economics, not a benchmark slide.</span></div>
+      <div class="doc-i rv"><span class="dn">03</span><span class="dt">Cohorts <em>over averages</em></span><span class="dd">Blended numbers hide the truth. I act on the curve.</span></div>
+      <div class="doc-i rv"><span class="dn">04</span><span class="dt">Demand <em>over hacks</em></span><span class="dd">You cannot out-tactic flat demand.</span></div>
+      <div class="doc-i rv"><span class="dn">05</span><span class="dt">Systems <em>over tactics</em></span><span class="dd">A campaign expires. A system compounds.</span></div>
     </div>
-    <div class="footer__big" aria-hidden="true">JACK<em>*</em>MATUSZEWSKI</div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<section id="proof">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">02</span><span class="t">Evidence</span><span class="r"></span></div>
+    <div class="proof">
+      <div class="pf rv">
+        <div class="big" data-count="77" data-prefix="+" data-suffix="%">+0%</div>
+        <div class="lab">New customer growth, year over year</div>
+        <div class="sub">Flagship 8-figure DTC account</div>
+        <div class="chart">
+          <svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
+            <polyline class="draw" style="--len:230" points="0,56 26,50 52,44 78,33 104,24 130,13 160,4"
+              fill="none" stroke="#5b8cff" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pf rv">
+        <div class="big" data-count="34" data-suffix="%">0%</div>
+        <div class="lab">of "conversions" found non-incremental, reallocated</div>
+        <div class="sub">After geo holdout testing</div>
+        <div class="chart"><div class="bars">
+          <div class="bar b1"><span>REPORTED</span></div>
+          <div class="bar b2"><span>REAL</span></div>
+        </div></div>
+      </div>
+      <div class="pf rv">
+        <div class="big" data-count="62" data-prefix="−" data-suffix="%">−0%</div>
+        <div class="lab">Time from data to decision</div>
+        <div class="sub">Dashboards replaced with a decision system</div>
+        <div class="chart">
+          <svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
+            <polyline class="draw" style="--len:210" points="0,8 26,12 52,20 78,30 104,40 130,49 160,54"
+              fill="none" stroke="#5b8cff" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="mono rv" style="margin-top:40px;color:var(--mut2)">Figures anonymized by agreement. Categories, not clients.</div>
+  </div>
+</section>
+
+<section id="system">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">03</span><span class="t">A Decision System, Live</span><span class="r"></span></div>
+    <div class="monitor rv">
+      <div class="mon-head">
+        <span class="mono">Daily pacing · incremental nCAC</span>
+        <span class="mono">Signal <span id="sigval" class="mon-val">--</span></span>
+      </div>
+      <canvas id="pulse"></canvas>
+      <div class="mon-foot"><b>One number the team acts on.</b> Not forty dashboards. The system tells you what to scale today and what to pull, and it survives the holdout.</div>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">04</span><span class="t">What I Operate</span><span class="r"></span></div>
+    <div class="caps">
+      <div class="cap rv"><h4>Measurement layer</h4><p>GA4, CAPI, server-side, warehouse. Geo holdouts and incrementality factors as standard.</p></div>
+      <div class="cap rv"><h4>Paid media on business metrics</h4><p>Meta, Google, programmatic, rebuilt around nCAC, POAS, and payback. Signal engineering, not spend and pray.</p></div>
+      <div class="cap rv"><h4>Scale without breaking economics</h4><p>Cohort and margin models, point of diminishing return, channel allocation. Growth the P&amp;L can carry.</p></div>
+      <div class="cap rv"><h4>AI decision systems</h4><p>Multi-agent analysis and forecasting that produce the weekly decision, not another report nobody acts on.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Start the diagnostic.</h2>
+    <p class="rv">One email. If it is a fit, we book a working session. If it is not, I will tell you on the first call.</p>
+    <a href="mailto:jacek.matuszewski@mta.digital" class="mailbtn rv">jacek.matuszewski@mta.digital →</a>
+    <div class="terms-line rv">
+      <div>Minimum <b>€500k annual media</b></div>
+      <div>No referral fees</div>
+      <div>No platform rev-share</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono">Jacek Matuszewski · Growth &amp; Data Operator</div>
+    <div class="mono">Poznań / Remote · 52.41°N 16.93°E</div>
+    <div class="mono">Operator, not a brochure</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- reveal + counters ---------- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in');
+      if(e.target.dataset && e.target.querySelector){ var c=e.target.querySelector('[data-count]'); if(c) count(c); }
+      io.unobserve(e.target); } });
+  },{threshold:.18});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  function count(el){
+    var target=parseFloat(el.dataset.count), pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+    if(reduce){el.textContent=pre+target+suf;return;}
+    var t0=null,dur=1400;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
+      var e=1-Math.pow(1-p,3); el.textContent=pre+Math.round(target*e)+suf;
+      if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- globe ---------- */
+  var cv=document.getElementById('globe'), ctx=cv.getContext('2d');
+  var W,H,R,cx,cy,DPR, rot=0, TILT=-0.42;
+  function resize(){ var r=cv.getBoundingClientRect(); DPR=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height; cv.width=W*DPR;cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    R=Math.min(W,H)*0.40; cx=W/2; cy=H/2; }
+  window.addEventListener('resize',resize); resize();
+
+  function rotY(v,a){var c=Math.cos(a),s=Math.sin(a);return{x:v.x*c+v.z*s,y:v.y,z:-v.x*s+v.z*c};}
+  function rotX(v,a){var c=Math.cos(a),s=Math.sin(a);return{x:v.x,y:v.y*c-v.z*s,z:v.y*s+v.z*c};}
+  function proj(v){var p=rotX(rotY(v,rot),TILT);return{x:cx+p.x*R,y:cy-p.y*R,z:p.z};}
+  function ll(latd,lond){var lat=latd*Math.PI/180,lon=lond*Math.PI/180,cl=Math.cos(lat);
+    return{x:cl*Math.sin(lon),y:Math.sin(lat),z:cl*Math.cos(lon)};}
+  function norm(v){var m=Math.hypot(v.x,v.y,v.z);return{x:v.x/m,y:v.y/m,z:v.z/m};}
+  function scale(v,k){return{x:v.x*k,y:v.y*k,z:v.z*k};}
+  function slerp(a,b,t){var d=Math.max(-1,Math.min(1,a.x*b.x+a.y*b.y+a.z*b.z));var om=Math.acos(d);
+    if(om<1e-4)return a;var s=Math.sin(om),w1=Math.sin((1-t)*om)/s,w2=Math.sin(t*om)/s;
+    return{x:w1*a.x+w2*b.x,y:w1*a.y+w2*b.y,z:w1*a.z+w2*b.z};}
+
+  var ORIGIN=ll(52.41,16.93); // Poznań
+  var HUBS=[[40,-100],[51,-0.1],[35,139],[1.3,103],[-33,151],[25,55],[-23,-46],[37,-122]].map(function(p){return ll(p[0],p[1]);});
+  var ARCS=HUBS.map(function(h,i){return{a:norm(ORIGIN),b:norm(h),ph:i/HUBS.length};});
+
+  function drawGraticule(){
+    ctx.lineWidth=1;
+    for(var lon=-180;lon<180;lon+=30){ // meridians
+      ctx.beginPath();var started=false;
+      for(var lat=-90;lat<=90;lat+=4){var p=proj(ll(lat,lon));
+        if(p.z>0){ if(!started){ctx.moveTo(p.x,p.y);started=true;} else ctx.lineTo(p.x,p.y);} else started=false;}
+      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();
+    }
+    for(var la=-60;la<=60;la+=30){ // parallels
+      ctx.beginPath();var st=false;
+      for(var ln=-180;ln<=180;ln+=4){var q=proj(ll(la,ln));
+        if(q.z>0){ if(!st){ctx.moveTo(q.x,q.y);st=true;} else ctx.lineTo(q.x,q.y);} else st=false;}
+      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();
+    }
+    // limb
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(120,130,150,.18)';ctx.stroke();
+  }
+  function drawArc(arc){
+    var N=54,pts=[];
+    for(var i=0;i<=N;i++){var t=i/N;var v=slerp(arc.a,arc.b,t);v=scale(norm(v),1+0.22*Math.sin(Math.PI*t));pts.push(proj(v));}
+    ctx.beginPath();var st=false;
+    for(var j=0;j<pts.length;j++){var p=pts[j];if(p.z>-0.05){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}
+    ctx.strokeStyle='rgba(91,140,255,.32)';ctx.lineWidth=1;ctx.stroke();
+    // travelling pulse
+    var tt=arc.ph%1;var vp=scale(norm(slerp(arc.a,arc.b,tt)),1+0.22*Math.sin(Math.PI*tt));var pp=proj(vp);
+    if(pp.z>0){ctx.beginPath();ctx.arc(pp.x,pp.y,2.4,0,Math.PI*2);ctx.fillStyle='#7ea6ff';
+      ctx.shadowColor='#5b8cff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;}
+  }
+  function dot(v,r,col,glow){var p=proj(v);if(p.z<=0)return;var a=0.4+0.6*p.z;
+    ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=col;
+    if(glow){ctx.shadowColor=col;ctx.shadowBlur=glow;}ctx.globalAlpha=a;ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    // soft core glow
+    var g=ctx.createRadialGradient(cx,cy,R*0.2,cx,cy,R*1.25);
+    g.addColorStop(0,'rgba(91,140,255,.10)');g.addColorStop(1,'rgba(91,140,255,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.25,0,Math.PI*2);ctx.fill();
+    drawGraticule();
+    ARCS.forEach(function(a){drawArc(a);a.ph+=0.0016;});
+    HUBS.forEach(function(h){dot(h,1.8,'#9fb6ee',0);});
+    dot(ORIGIN,3.2,'#7ea6ff',14);
+    if(!reduce)rot+=0.0016;
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  /* ---------- live pulse monitor ---------- */
+  var pc=document.getElementById('pulse'), px=pc.getContext('2d');
+  var PW,PH,PDPR,data=[];
+  function presize(){var r=pc.getBoundingClientRect();PDPR=Math.min(window.devicePixelRatio||1,2);
+    PW=r.width;PH=r.height;pc.width=PW*PDPR;pc.height=PH*PDPR;px.setTransform(PDPR,0,0,PDPR,0,0);}
+  window.addEventListener('resize',presize);presize();
+  var COUNT=90, base=0.5, val=0.5;
+  for(var i=0;i<COUNT;i++)data.push(0.5);
+  var sig=document.getElementById('sigval');
+  function pframe(){
+    if(!reduce){
+      base+=(Math.random()-0.5)*0.04; base=Math.max(0.25,Math.min(0.75,base));
+      val+=(base-val)*0.1+(Math.random()-0.5)*0.06; val=Math.max(0.08,Math.min(0.92,val));
+      data.push(val); if(data.length>COUNT)data.shift();
+      if(sig)sig.textContent=(val>base?'▲ ':'▼ ')+(40+Math.round(val*40))+' nCAC';
+    }
+    px.clearRect(0,0,PW,PH);
+    // baseline grid
+    px.strokeStyle='rgba(120,130,150,.08)';px.lineWidth=1;
+    for(var y=1;y<4;y++){px.beginPath();px.moveTo(0,PH*y/4);px.lineTo(PW,PH*y/4);px.stroke();}
+    // area + line
+    var step=PW/(COUNT-1);
+    px.beginPath();
+    for(var k=0;k<data.length;k++){var xx=k*step,yy=PH-data[k]*PH*0.86-PH*0.07;
+      if(k===0)px.moveTo(xx,yy);else px.lineTo(xx,yy);}
+    var grd=px.createLinearGradient(0,0,0,PH);
+    grd.addColorStop(0,'rgba(91,140,255,.22)');grd.addColorStop(1,'rgba(91,140,255,0)');
+    px.lineTo(PW,PH);px.lineTo(0,PH);px.closePath();px.fillStyle=grd;px.fill();
+    px.beginPath();
+    for(var m=0;m<data.length;m++){var ax=m*step,ay=PH-data[m]*PH*0.86-PH*0.07;
+      if(m===0)px.moveTo(ax,ay);else px.lineTo(ax,ay);}
+    px.strokeStyle='#5b8cff';px.lineWidth=1.6;px.stroke();
+    // leading dot
+    var lx=(data.length-1)*step,ly=PH-data[data.length-1]*PH*0.86-PH*0.07;
+    px.beginPath();px.arc(lx,ly,2.6,0,Math.PI*2);px.fillStyle='#9fb6ee';
+    px.shadowColor='#5b8cff';px.shadowBlur=10;px.fill();px.shadowBlur=0;
+    requestAnimationFrame(pframe);
+  }
+  pframe();
+})();
+</script>
 </body>
 </html>
