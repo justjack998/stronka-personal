@@ -20,7 +20,7 @@
 <style>
   :root{
     --bg:#060708; --ink:#f3f4f5; --mut:#6b7079; --mut2:#41454c;
-    --line:#16181c; --accent:#5b8cff; --warn:#e8a14d;
+    --line:#16181c; --accent:#5b8cff;
     --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
     --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
   }
@@ -49,7 +49,7 @@
   .hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:24px;padding:96px 0 50px}
   .hero .lbl{margin-bottom:24px}
   .hero h1{font-size:clamp(32px,4.4vw,54px);line-height:1.06;letter-spacing:-.025em;font-weight:600;max-width:15ch}
-  .hero h1 .a{color:var(--accent)} .hero h1 .w{color:var(--warn)}
+  .hero h1 .a{color:var(--accent)}
   .hero p{margin-top:24px;color:var(--mut);font-size:clamp(14px,1.5vw,17px);max-width:50ch;line-height:1.65}
   .hero p b{color:var(--ink);font-weight:400}
   .hero .cta{margin-top:34px;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
@@ -79,13 +79,13 @@
   .track .sym{margin-top:16px;color:var(--mut);font-size:15px;line-height:1.6}
   .track .out{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink);line-height:1.6}
   .track .out .mk{color:var(--tc);font-family:var(--mono);margin-right:8px}
-  .track.a{--tc:var(--accent)} .track.b{--tc:var(--warn)}
+  .track.a{--tc:var(--accent)} .track.b{--tc:var(--accent)}
   @media(max-width:760px){.tracks{grid-template-columns:1fr}}
 
   /* diagnosis */
   .diag{display:flex;flex-direction:column;border-top:1px solid var(--line)}
   .diag-i{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
-  .diag-i .x{font-family:var(--mono);color:var(--warn);font-size:13px}
+  .diag-i .x{font-family:var(--mono);color:var(--accent);font-size:13px}
   .diag-i p{font-size:clamp(16px,1.8vw,20px);color:var(--ink);font-weight:400;line-height:1.45}
   .diag-note{margin-top:26px;color:var(--mut);font-size:15px;max-width:56ch}
   .diag-note b{color:var(--ink);font-weight:400}
@@ -187,7 +187,7 @@
 <header class="hero wrap">
   <div class="hero-l">
     <div class="lbl mono rv">Acquisition Engine · DTC Growth</div>
-    <h1 class="rv">When growth <span class="a">stalls</span>, or CAC starts <span class="w">eating your margin</span>, the engine is the problem.</h1>
+    <h1 class="rv">When growth <span class="a">stalls</span>, or CAC starts <span class="a">eating your margin</span>, the engine is the problem.</h1>
     <p class="rv">I find why your acquisition stopped scaling, cut the spend that never worked, and rebuild it to grow on <b>contribution margin</b>. Then I hand your team the system that keeps it running.</p>
     <a href="#contact" class="cta rv">Book the diagnostic →</a>
   </div>
