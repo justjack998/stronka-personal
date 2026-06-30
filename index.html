@@ -4,23 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jacek Matuszewski — Growth & Data Operator</title>
-<meta name="description" content="Growth and data operator for DTC brands. I scale paid media on contribution margin and incremental customers, not platform ROAS. Incrementality, nCAC, decision systems.">
+<meta name="description" content="When growth stalls or CAC starts eating your margin, the acquisition engine is the problem. I find why, cut what doesn't scale, and rebuild it to grow on contribution margin.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jmatuszewski.digital/">
 <meta property="og:title" content="Jacek Matuszewski — Growth & Data Operator">
-<meta property="og:description" content="I scale DTC brands on contribution margin and incremental customers, not platform ROAS. Proven with geo holdouts.">
+<meta property="og:description" content="When growth stalls or CAC eats your margin, the acquisition engine is the problem. I rebuild it to grow on contribution margin.">
 <meta property="og:image" content="https://jmatuszewski.digital/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jacek Matuszewski — Growth & Data Operator">
-<meta name="twitter:description" content="I scale DTC brands on contribution margin and incremental customers, not platform ROAS.">
+<meta name="twitter:description" content="When growth stalls or CAC eats your margin, I rebuild the acquisition engine to grow on contribution margin.">
 <meta name="twitter:image" content="https://jmatuszewski.digital/og-image.png">
 <style>
   :root{
     --bg:#060708; --ink:#f3f4f5; --mut:#6b7079; --mut2:#41454c;
-    --line:#16181c; --accent:#5b8cff; --accent-dim:rgba(91,140,255,.55);
+    --line:#16181c; --accent:#5b8cff;
     --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
     --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
   }
@@ -30,9 +30,7 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1140px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
   .mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
-  .acc{color:var(--accent)}
 
-  /* top bar */
   .top{position:fixed;top:0;left:0;right:0;z-index:40;height:60px;
     background:linear-gradient(180deg,rgba(6,7,8,.9),rgba(6,7,8,0));backdrop-filter:blur(6px)}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -48,85 +46,122 @@
   .pill:hover{border-color:var(--accent);color:var(--ink)}
   @media(max-width:600px){.avail{display:none}}
 
-  /* hero */
-  .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;
-    padding:90px 0 40px}
-  .hero-l .lbl{margin-bottom:26px}
-  .hero h1{font-size:clamp(34px,5vw,62px);line-height:1.04;letter-spacing:-.025em;font-weight:600;max-width:13ch}
-  .hero h1 .sys{color:var(--accent)}
-  .hero h1 .st{color:var(--mut2);text-decoration:line-through;text-decoration-thickness:1.5px}
-  .hero p{margin-top:26px;color:var(--mut);font-size:clamp(14px,1.5vw,17px);max-width:46ch;line-height:1.65}
+  .hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:24px;padding:96px 0 50px}
+  .hero .lbl{margin-bottom:24px}
+  .hero h1{font-size:clamp(32px,4.4vw,54px);line-height:1.06;letter-spacing:-.025em;font-weight:600;max-width:15ch}
+  .hero h1 .a{color:var(--accent)}
+  .hero p{margin-top:24px;color:var(--mut);font-size:clamp(14px,1.5vw,17px);max-width:50ch;line-height:1.65}
   .hero p b{color:var(--ink);font-weight:400}
-  .hero .cta{margin-top:36px;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
+  .hero .cta{margin-top:34px;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
     font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:15px 26px;background:var(--accent);
     color:#04122f;font-weight:600;transition:.2s}
   .hero .cta:hover{filter:brightness(1.12)}
-  .globe-box{position:relative;aspect-ratio:1;width:100%;max-width:560px;justify-self:center}
+  .globe-box{position:relative;aspect-ratio:1;width:100%;max-width:520px;justify-self:center}
   #globe{width:100%;height:100%;display:block}
   .globe-cap{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);white-space:nowrap;
     font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut2)}
-  @media(max-width:840px){
-    .hero{grid-template-columns:1fr;text-align:left}
-    .globe-box{max-width:340px;order:-1;margin-bottom:10px}
-  }
+  @media(max-width:860px){.hero{grid-template-columns:1fr}.globe-box{max-width:320px;order:-1;margin-bottom:8px}}
 
-  section{padding:110px 0;position:relative;z-index:2}
-  .seclbl{display:flex;align-items:center;gap:14px;margin-bottom:54px}
+  section{padding:104px 0;position:relative;z-index:2}
+  .seclbl{display:flex;align-items:center;gap:14px;margin-bottom:48px}
   .seclbl .n{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.2em}
   .seclbl .t{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
   .seclbl .r{flex:1;height:1px;background:var(--line)}
+  .lead-h{font-size:clamp(24px,3vw,38px);font-weight:600;letter-spacing:-.02em;max-width:20ch;margin-bottom:18px}
+  .lead-sub{color:var(--mut);font-size:16px;max-width:60ch}
 
-  /* doctrine minimal */
-  .doc{display:flex;flex-direction:column}
-  .doc-i{display:flex;gap:28px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line)}
-  .doc-i:last-child{border-bottom:1px solid var(--line)}
-  .doc-i .dn{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:34px}
-  .doc-i .dt{font-size:clamp(18px,2.3vw,26px);font-weight:500;letter-spacing:-.01em}
-  .doc-i .dt em{font-style:normal;color:var(--mut2)}
-  .doc-i .dd{margin-left:auto;color:var(--mut);font-size:13.5px;max-width:38ch;text-align:right}
-  @media(max-width:760px){.doc-i{flex-wrap:wrap;gap:10px 28px}.doc-i .dd{margin-left:62px;text-align:left}}
+  /* two tracks */
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  .track{border:1px solid var(--line);background:#0a0c0e;padding:34px 30px;transition:.22s;position:relative}
+  .track:hover{border-color:var(--tc);transform:translateY(-3px)}
+  .track .tk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tc)}
+  .track h3{margin-top:16px;font-size:clamp(21px,2.4vw,28px);font-weight:600;letter-spacing:-.01em}
+  .track .sym{margin-top:16px;color:var(--mut);font-size:15px;line-height:1.6}
+  .track .out{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink);line-height:1.6}
+  .track .out .mk{color:var(--tc);font-family:var(--mono);margin-right:8px}
+  .track.a{--tc:var(--accent)} .track.b{--tc:var(--accent)}
+  @media(max-width:760px){.tracks{grid-template-columns:1fr}}
 
-  /* proof + charts */
+  /* diagnosis */
+  .diag{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .diag-i{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .diag-i .x{font-family:var(--mono);color:var(--accent);font-size:13px}
+  .diag-i p{font-size:clamp(16px,1.8vw,20px);color:var(--ink);font-weight:400;line-height:1.45}
+  .diag-note{margin-top:26px;color:var(--mut);font-size:15px;max-width:56ch}
+  .diag-note b{color:var(--ink);font-weight:400}
+
+  /* the fix */
+  .fix{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 56px}
+  .fx{padding:24px 0;border-top:1px solid var(--line)}
+  .fx .fi{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.16em}
+  .fx h4{margin-top:12px;font-size:18px;font-weight:500}
+  .fx p{margin-top:10px;color:var(--mut);font-size:14.5px;line-height:1.6;max-width:42ch}
+  @media(max-width:680px){.fix{grid-template-columns:1fr}}
+
+  /* monitor */
+  .monitor{margin-top:46px;border:1px solid var(--line);background:#0a0c0e}
+  .mon-head{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line)}
+  .mon-head .mono{font-size:10px}
+  .mon-val{font-family:var(--mono);font-size:13px;color:var(--accent)}
+  #pulse{display:block;width:100%;height:150px}
+  .mon-foot{padding:15px 22px;border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+  .mon-foot b{color:var(--ink);font-weight:400}
+
+  /* proof */
   .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
-  .pf .big{font-size:clamp(46px,6vw,72px);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .pf .big{font-size:clamp(44px,6vw,68px);font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
   .pf .lab{margin-top:16px;font-size:14.5px;color:var(--ink);max-width:30ch}
   .pf .sub{margin-top:7px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
-  .pf .chart{margin-top:24px;height:60px}
+  .pf .chart{margin-top:22px;height:60px}
   .bars{display:flex;align-items:flex-end;gap:14px;height:60px}
-  .bar{width:38px;background:var(--line);position:relative;height:8px;transition:height 1.1s cubic-bezier(.2,.7,.2,1)}
+  .bar{width:38px;background:var(--line);height:8px;transition:height 1.1s cubic-bezier(.2,.7,.2,1);position:relative}
   .bar.b1{background:var(--mut2)} .bar.b2{background:var(--accent)}
   .bar span{position:absolute;top:-16px;left:0;font-family:var(--mono);font-size:9px;color:var(--mut)}
   svg .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.6s ease}
   .in svg .draw{stroke-dashoffset:0}
   .in .bar.b1{height:56px} .in .bar.b2{height:37px}
   @media(max-width:760px){.proof{grid-template-columns:1fr;gap:54px}}
+  .anon{margin-top:38px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
 
-  /* live monitor */
-  .monitor{border:1px solid var(--line);background:#0a0c0e;padding:0}
-  .mon-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
-  .mon-head .mono{font-size:10px}
-  .mon-val{font-family:var(--mono);font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
-  #pulse{display:block;width:100%;height:160px}
-  .mon-foot{padding:16px 22px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
-  .mon-foot b{color:var(--ink);font-weight:400}
+  /* method */
+  .method{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ph{background:var(--bg);padding:28px 22px;min-height:190px;display:flex;flex-direction:column}
+  .ph .pn{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.16em}
+  .ph h4{margin-top:13px;font-size:17px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+  .ph p{margin-top:11px;color:var(--mut);font-size:13.5px;line-height:1.55;flex:1}
+  .ph .fee{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut2)}
+  @media(max-width:880px){.method{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.method{grid-template-columns:1fr}}
 
-  /* capabilities minimal */
-  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 60px}
-  .cap{padding:24px 0;border-top:1px solid var(--line)}
-  .cap h4{font-size:18px;font-weight:500}
-  .cap p{margin-top:10px;color:var(--mut);font-size:14px;line-height:1.6;max-width:42ch}
-  @media(max-width:680px){.caps{grid-template-columns:1fr}}
+  /* doctrine compact */
+  .doc-i{display:flex;gap:24px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line)}
+  .doc-i:last-child{border-bottom:1px solid var(--line)}
+  .doc-i .dn{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:30px}
+  .doc-i .dt{font-size:clamp(16px,2vw,22px);font-weight:500}
+  .doc-i .dt em{font-style:normal;color:var(--mut2)}
+  .doc-i .dd{margin-left:auto;color:var(--mut);font-size:13px;max-width:40ch;text-align:right}
+  @media(max-width:700px){.doc-i{flex-wrap:wrap;gap:8px 24px}.doc-i .dd{margin-left:54px;text-align:left}}
 
-  /* contact */
-  .contact{padding:130px 0}
-  .contact h2{font-size:clamp(34px,6vw,66px);font-weight:600;letter-spacing:-.025em;line-height:1.03}
-  .contact p{margin-top:24px;color:var(--mut);font-size:17px;max-width:50ch;line-height:1.6}
-  .mailbtn{display:inline-block;margin-top:38px;font-family:var(--mono);font-size:clamp(14px,2vw,19px);
+  /* terms */
+  .terms{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .term{background:var(--bg);padding:30px 28px}
+  .term h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+  .term ul{list-style:none}
+  .term li{padding:11px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink);display:flex;gap:12px}
+  .term li:first-child{border-top:none}
+  .term li .m{font-family:var(--mono);font-size:13px}
+  .term.yes li .m{color:var(--accent)} .term.no li .m{color:var(--mut2)} .term.no li{color:var(--mut)}
+  @media(max-width:680px){.terms{grid-template-columns:1fr}}
+  .bound{margin-top:1px;background:#0a0c0e;border:1px solid var(--line);padding:20px 28px;display:flex;gap:34px;flex-wrap:wrap}
+  .bound div{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+  .bound b{color:var(--ink)}
+
+  .contact{padding:124px 0}
+  .contact h2{font-size:clamp(32px,5.5vw,62px);font-weight:600;letter-spacing:-.025em;line-height:1.04}
+  .contact p{margin-top:24px;color:var(--mut);font-size:17px;max-width:54ch;line-height:1.6}
+  .mailbtn{display:inline-block;margin-top:36px;font-family:var(--mono);font-size:clamp(14px,2vw,19px);
     color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:5px;transition:.2s}
   .mailbtn:hover{border-color:var(--accent)}
-  .terms-line{margin-top:46px;display:flex;gap:30px;flex-wrap:wrap}
-  .terms-line div{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
-  .terms-line b{color:var(--mut)}
 
   footer{border-top:1px solid var(--line);padding:34px 0}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
@@ -151,106 +186,158 @@
 
 <header class="hero wrap">
   <div class="hero-l">
-    <div class="lbl mono rv">Growth &amp; Data Operator</div>
-    <h1 class="rv">Most brands scale <span class="st">spend</span>. I scale the <span class="sys">system</span> that makes it profitable.</h1>
-    <p class="rv">Paid media that grows on <b>contribution margin and incremental customers</b>, not platform ROAS. I find the growth your dashboards are sitting on, prove it with a holdout, and hand your team the system that runs it.</p>
+    <div class="lbl mono rv">Acquisition Engine · DTC Growth</div>
+    <h1 class="rv">When growth <span class="a">stalls</span>, or CAC starts <span class="a">eating your margin</span>, the engine is the problem.</h1>
+    <p class="rv">I find why your acquisition stopped scaling, cut the spend that never worked, and rebuild it to grow on <b>contribution margin</b>. Then I hand your team the system that keeps it running.</p>
     <a href="#contact" class="cta rv">Book the diagnostic →</a>
   </div>
   <div class="globe-box rv">
     <canvas id="globe"></canvas>
-    <div class="globe-cap">Decisions, modeled across markets</div>
+    <div class="globe-cap">Acquisition, modeled across markets</div>
   </div>
 </header>
 
-<section id="doctrine">
+<section id="tracks">
   <div class="wrap">
-    <div class="seclbl rv"><span class="n">01</span><span class="t">Operating Doctrine</span><span class="r"></span></div>
-    <div class="doc">
-      <div class="doc-i rv"><span class="dn">01</span><span class="dt">Incrementality <em>over attribution</em></span><span class="dd">If it does not survive a geo holdout, it did not happen.</span></div>
-      <div class="doc-i rv"><span class="dn">02</span><span class="dt">Contribution margin <em>over ROAS</em></span><span class="dd">Targets from your unit economics, not a benchmark slide.</span></div>
-      <div class="doc-i rv"><span class="dn">03</span><span class="dt">Cohorts <em>over averages</em></span><span class="dd">Blended numbers hide the truth. I act on the curve.</span></div>
-      <div class="doc-i rv"><span class="dn">04</span><span class="dt">Demand <em>over hacks</em></span><span class="dd">You cannot out-tactic flat demand.</span></div>
-      <div class="doc-i rv"><span class="dn">05</span><span class="dt">Systems <em>over tactics</em></span><span class="dd">A campaign expires. A system compounds.</span></div>
+    <div class="seclbl rv"><span class="n">01</span><span class="t">Two ways the engine breaks</span><span class="r"></span></div>
+    <div class="lead-h rv">You're probably living one of these.</div>
+    <div class="tracks">
+      <div class="track a rv">
+        <div class="tk">Track A</div>
+        <h3>Break the ceiling</h3>
+        <div class="sym">Spend is up. New customers are flat. Every channel claims it is working and the total does not add up. You have run out of obvious levers.</div>
+        <div class="out"><span class="mk">→</span>I find where growth is still available, separate what scales from what is saturated, and rebuild the engine around it.</div>
+      </div>
+      <div class="track b rv">
+        <div class="tk">Track B</div>
+        <h3>Stop the margin bleed</h3>
+        <div class="sym">CAC keeps climbing. Payback is stretching. Finance is asking harder questions. You are growing into a thinner margin every quarter.</div>
+        <div class="out"><span class="mk">→</span>I reset targets from your unit economics, cut the spend that was never incremental, and get back to growth your margin can carry.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnosis">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">02</span><span class="t">The Diagnosis</span><span class="r"></span></div>
+    <div class="lead-h rv">What is actually wrong, and why your reports will not tell you.</div>
+    <div class="diag rv">
+      <div class="diag-i"><span class="x">01</span><p>Your platforms are competing for credit. The attribution totals add up to more than your revenue.</p></div>
+      <div class="diag-i"><span class="x">02</span><p>Retargeting is eating budget for customers you would have kept anyway.</p></div>
+      <div class="diag-i"><span class="x">03</span><p>Nobody has run the holdout, so "working" is an assumption, not a fact.</p></div>
+      <div class="diag-i"><span class="x">04</span><p>Your targets came from a benchmark, not your contribution margin.</p></div>
+    </div>
+    <div class="diag-note rv"><b>None of this shows up in a platform dashboard.</b> That is exactly why the ceiling holds and the margin keeps leaking.</div>
+  </div>
+</section>
+
+<section id="fix">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">03</span><span class="t">What Changes</span><span class="r"></span></div>
+    <div class="lead-h rv">You stop guessing and start growing on numbers that survive a test.</div>
+    <div class="fix rv">
+      <div class="fx"><div class="fi">A</div><h4>The real number</h4><p>Every channel tested with a holdout. Budget follows incremental customers, not self-reported credit.</p></div>
+      <div class="fx"><div class="fi">B</div><h4>Targets from your economics</h4><p>nCAC and payback derived from your contribution margin, not a benchmark slide.</p></div>
+      <div class="fx"><div class="fi">C</div><h4>A system, not a dependency</h4><p>The pacing and decision models your team runs after I leave. You keep the capability.</p></div>
+      <div class="fx"><div class="fi">D</div><h4>Caught before it costs you</h4><p>The broken feed and the double-count, found before they reach a decision or a board deck.</p></div>
+    </div>
+    <div class="monitor rv">
+      <div class="mon-head"><span class="mono">Daily pacing · incremental nCAC</span><span class="mono">Signal <span id="sigval" class="mon-val">--</span></span></div>
+      <canvas id="pulse"></canvas>
+      <div class="mon-foot"><b>One number your team acts on.</b> Not forty dashboards. The system says what to scale today and what to pull, and it survives the holdout.</div>
     </div>
   </div>
 </section>
 
 <section id="proof">
   <div class="wrap">
-    <div class="seclbl rv"><span class="n">02</span><span class="t">Evidence</span><span class="r"></span></div>
+    <div class="seclbl rv"><span class="n">04</span><span class="t">Evidence</span><span class="r"></span></div>
     <div class="proof">
       <div class="pf rv">
         <div class="big" data-count="77" data-prefix="+" data-suffix="%">+0%</div>
-        <div class="lab">New customer growth, year over year</div>
+        <div class="lab">New customer growth, year over year, after the ceiling broke</div>
         <div class="sub">Flagship 8-figure DTC account</div>
-        <div class="chart">
-          <svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
-            <polyline class="draw" style="--len:230" points="0,56 26,50 52,44 78,33 104,24 130,13 160,4"
-              fill="none" stroke="#5b8cff" stroke-width="2"/>
-          </svg>
-        </div>
+        <div class="chart"><svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
+          <polyline class="draw" style="--len:230" points="0,56 26,50 52,44 78,33 104,24 130,13 160,4" fill="none" stroke="#5b8cff" stroke-width="2"/></svg></div>
       </div>
       <div class="pf rv">
         <div class="big" data-count="34" data-suffix="%">0%</div>
-        <div class="lab">of "conversions" found non-incremental, reallocated</div>
+        <div class="lab">of "conversions" found non-incremental, budget reallocated</div>
         <div class="sub">After geo holdout testing</div>
-        <div class="chart"><div class="bars">
-          <div class="bar b1"><span>REPORTED</span></div>
-          <div class="bar b2"><span>REAL</span></div>
-        </div></div>
+        <div class="chart"><div class="bars"><div class="bar b1"><span>REPORTED</span></div><div class="bar b2"><span>REAL</span></div></div></div>
       </div>
       <div class="pf rv">
         <div class="big" data-count="62" data-prefix="−" data-suffix="%">−0%</div>
         <div class="lab">Time from data to decision</div>
         <div class="sub">Dashboards replaced with a decision system</div>
-        <div class="chart">
-          <svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
-            <polyline class="draw" style="--len:210" points="0,8 26,12 52,20 78,30 104,40 130,49 160,54"
-              fill="none" stroke="#5b8cff" stroke-width="2"/>
-          </svg>
-        </div>
+        <div class="chart"><svg viewBox="0 0 160 60" width="100%" height="60" preserveAspectRatio="none">
+          <polyline class="draw" style="--len:210" points="0,8 26,12 52,20 78,30 104,40 130,49 160,54" fill="none" stroke="#5b8cff" stroke-width="2"/></svg></div>
       </div>
     </div>
-    <div class="mono rv" style="margin-top:40px;color:var(--mut2)">Figures anonymized by agreement. Categories, not clients.</div>
+    <div class="anon rv">Figures anonymized by agreement. Categories, not clients.</div>
   </div>
 </section>
 
-<section id="system">
+<section id="method">
   <div class="wrap">
-    <div class="seclbl rv"><span class="n">03</span><span class="t">A Decision System, Live</span><span class="r"></span></div>
-    <div class="monitor rv">
-      <div class="mon-head">
-        <span class="mono">Daily pacing · incremental nCAC</span>
-        <span class="mono">Signal <span id="sigval" class="mon-val">--</span></span>
-      </div>
-      <canvas id="pulse"></canvas>
-      <div class="mon-foot"><b>One number the team acts on.</b> Not forty dashboards. The system tells you what to scale today and what to pull, and it survives the holdout.</div>
+    <div class="seclbl rv"><span class="n">05</span><span class="t">How It Runs</span><span class="r"></span></div>
+    <div class="method rv">
+      <div class="ph"><div class="pn">01</div><h4>Audit</h4><p>Measurement teardown and incrementality baseline. Where the money goes, and what your dashboards are hiding.</p><div class="fee">Fixed fee</div></div>
+      <div class="ph"><div class="pn">02</div><h4>Design</h4><p>Target architecture: nCAC, channel allocation, and the decision system your team will run on.</p><div class="fee">Fixed fee</div></div>
+      <div class="ph"><div class="pn">03</div><h4>Operate</h4><p>Implementation and scaling against business metrics. Tested, not assumed, every step.</p><div class="fee">Retainer</div></div>
+      <div class="ph"><div class="pn">04</div><h4>Hand off</h4><p>Your team owns the system. I stay only as long as the numbers need me, not a month longer.</p><div class="fee">Exit by design</div></div>
     </div>
   </div>
 </section>
 
-<section id="capabilities">
+<section id="doctrine">
   <div class="wrap">
-    <div class="seclbl rv"><span class="n">04</span><span class="t">What I Operate</span><span class="r"></span></div>
-    <div class="caps">
-      <div class="cap rv"><h4>Measurement layer</h4><p>GA4, CAPI, server-side, warehouse. Geo holdouts and incrementality factors as standard.</p></div>
-      <div class="cap rv"><h4>Paid media on business metrics</h4><p>Meta, Google, programmatic, rebuilt around nCAC, POAS, and payback. Signal engineering, not spend and pray.</p></div>
-      <div class="cap rv"><h4>Scale without breaking economics</h4><p>Cohort and margin models, point of diminishing return, channel allocation. Growth the P&amp;L can carry.</p></div>
-      <div class="cap rv"><h4>AI decision systems</h4><p>Multi-agent analysis and forecasting that produce the weekly decision, not another report nobody acts on.</p></div>
+    <div class="seclbl rv"><span class="n">06</span><span class="t">How I Operate</span><span class="r"></span></div>
+    <div class="doc-i rv"><span class="dn">01</span><span class="dt">Incrementality <em>over attribution</em></span><span class="dd">If it does not survive a geo holdout, it did not happen.</span></div>
+    <div class="doc-i rv"><span class="dn">02</span><span class="dt">Contribution margin <em>over ROAS</em></span><span class="dd">Targets from your economics, not a benchmark slide.</span></div>
+    <div class="doc-i rv"><span class="dn">03</span><span class="dt">Cohorts <em>over averages</em></span><span class="dd">Blended numbers hide the truth. You act on the curve.</span></div>
+    <div class="doc-i rv"><span class="dn">04</span><span class="dt">Demand <em>over hacks</em></span><span class="dd">You cannot out-tactic flat demand.</span></div>
+    <div class="doc-i rv"><span class="dn">05</span><span class="dt">Systems <em>over tactics</em></span><span class="dd">A campaign expires. A system compounds.</span></div>
+  </div>
+</section>
+
+<section id="terms">
+  <div class="wrap">
+    <div class="seclbl rv"><span class="n">07</span><span class="t">Who This Is For</span><span class="r"></span></div>
+    <div class="terms rv">
+      <div class="term yes">
+        <h4>Call me if</h4>
+        <ul>
+          <li><span class="m">+</span>You have hit a growth ceiling and more spend does not move it.</li>
+          <li><span class="m">+</span>CAC is climbing into your margin and finance has noticed.</li>
+          <li><span class="m">+</span>You suspect your attribution double-counts and cannot prove it.</li>
+          <li><span class="m">+</span>You are done with agencies that report what the platform told them.</li>
+        </ul>
+      </div>
+      <div class="term no">
+        <h4>Not me if</h4>
+        <ul>
+          <li><span class="m">−</span>Blended ROAS is your primary metric and it is working.</li>
+          <li><span class="m">−</span>You want a media shop that takes orders and runs the plan.</li>
+          <li><span class="m">−</span>You are under €500k spend and need volume more than rigor.</li>
+          <li><span class="m">−</span>You want a creative agency to produce campaigns.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bound rv">
+      <div>Minimum <b>€500k annual media</b></div>
+      <div>No referral fees</div>
+      <div>No platform rev-share</div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 class="rv">Start the diagnostic.</h2>
-    <p class="rv">One email. If it is a fit, we book a working session. If it is not, I will tell you on the first call.</p>
+    <h2 class="rv">Find out which engine you are running.</h2>
+    <p class="rv">One email. The diagnostic tells you whether you have a ceiling or a margin problem, and what it would take to fix it. If we are not a fit, you will hear it on the first call.</p>
     <a href="mailto:jacek.matuszewski@mta.digital" class="mailbtn rv">jacek.matuszewski@mta.digital →</a>
-    <div class="terms-line rv">
-      <div>Minimum <b>€500k annual media</b></div>
-      <div>No referral fees</div>
-      <div>No platform rev-share</div>
-    </div>
   </div>
 </section>
 
@@ -265,133 +352,94 @@
 <script>
 (function(){
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- reveal + counters ---------- */
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in');
-      if(e.target.dataset && e.target.querySelector){ var c=e.target.querySelector('[data-count]'); if(c) count(c); }
+      var c=e.target.querySelector&&e.target.querySelector('[data-count]'); if(c) count(c);
       io.unobserve(e.target); } });
-  },{threshold:.18});
+  },{threshold:.16});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-
   function count(el){
-    var target=parseFloat(el.dataset.count), pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+    var target=parseFloat(el.dataset.count),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
     if(reduce){el.textContent=pre+target+suf;return;}
     var t0=null,dur=1400;
-    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
-      var e=1-Math.pow(1-p,3); el.textContent=pre+Math.round(target*e)+suf;
-      if(p<1)requestAnimationFrame(step); }
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=1-Math.pow(1-p,3);
+      el.textContent=pre+Math.round(target*e)+suf;if(p<1)requestAnimationFrame(step);}
     requestAnimationFrame(step);
   }
 
-  /* ---------- globe ---------- */
-  var cv=document.getElementById('globe'), ctx=cv.getContext('2d');
-  var W,H,R,cx,cy,DPR, rot=0, TILT=-0.42;
-  function resize(){ var r=cv.getBoundingClientRect(); DPR=Math.min(window.devicePixelRatio||1,2);
-    W=r.width;H=r.height; cv.width=W*DPR;cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    R=Math.min(W,H)*0.40; cx=W/2; cy=H/2; }
-  window.addEventListener('resize',resize); resize();
-
+  /* globe */
+  var cv=document.getElementById('globe'),ctx=cv.getContext('2d');
+  var W,H,R,cx,cy,DPR,rot=0,TILT=-0.42;
+  function resize(){var r=cv.getBoundingClientRect();DPR=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    R=Math.min(W,H)*0.40;cx=W/2;cy=H/2;}
+  window.addEventListener('resize',resize);resize();
   function rotY(v,a){var c=Math.cos(a),s=Math.sin(a);return{x:v.x*c+v.z*s,y:v.y,z:-v.x*s+v.z*c};}
   function rotX(v,a){var c=Math.cos(a),s=Math.sin(a);return{x:v.x,y:v.y*c-v.z*s,z:v.y*s+v.z*c};}
   function proj(v){var p=rotX(rotY(v,rot),TILT);return{x:cx+p.x*R,y:cy-p.y*R,z:p.z};}
   function ll(latd,lond){var lat=latd*Math.PI/180,lon=lond*Math.PI/180,cl=Math.cos(lat);
     return{x:cl*Math.sin(lon),y:Math.sin(lat),z:cl*Math.cos(lon)};}
   function norm(v){var m=Math.hypot(v.x,v.y,v.z);return{x:v.x/m,y:v.y/m,z:v.z/m};}
-  function scale(v,k){return{x:v.x*k,y:v.y*k,z:v.z*k};}
+  function scl(v,k){return{x:v.x*k,y:v.y*k,z:v.z*k};}
   function slerp(a,b,t){var d=Math.max(-1,Math.min(1,a.x*b.x+a.y*b.y+a.z*b.z));var om=Math.acos(d);
     if(om<1e-4)return a;var s=Math.sin(om),w1=Math.sin((1-t)*om)/s,w2=Math.sin(t*om)/s;
     return{x:w1*a.x+w2*b.x,y:w1*a.y+w2*b.y,z:w1*a.z+w2*b.z};}
-
-  var ORIGIN=ll(52.41,16.93); // Poznań
+  var ORIGIN=ll(52.41,16.93);
   var HUBS=[[40,-100],[51,-0.1],[35,139],[1.3,103],[-33,151],[25,55],[-23,-46],[37,-122]].map(function(p){return ll(p[0],p[1]);});
   var ARCS=HUBS.map(function(h,i){return{a:norm(ORIGIN),b:norm(h),ph:i/HUBS.length};});
-
-  function drawGraticule(){
-    ctx.lineWidth=1;
-    for(var lon=-180;lon<180;lon+=30){ // meridians
-      ctx.beginPath();var started=false;
+  function grat(){ctx.lineWidth=1;
+    for(var lon=-180;lon<180;lon+=30){ctx.beginPath();var st=false;
       for(var lat=-90;lat<=90;lat+=4){var p=proj(ll(lat,lon));
-        if(p.z>0){ if(!started){ctx.moveTo(p.x,p.y);started=true;} else ctx.lineTo(p.x,p.y);} else started=false;}
-      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();
-    }
-    for(var la=-60;la<=60;la+=30){ // parallels
-      ctx.beginPath();var st=false;
+        if(p.z>0){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}
+      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();}
+    for(var la=-60;la<=60;la+=30){ctx.beginPath();var s2=false;
       for(var ln=-180;ln<=180;ln+=4){var q=proj(ll(la,ln));
-        if(q.z>0){ if(!st){ctx.moveTo(q.x,q.y);st=true;} else ctx.lineTo(q.x,q.y);} else st=false;}
-      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();
-    }
-    // limb
-    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(120,130,150,.18)';ctx.stroke();
-  }
-  function drawArc(arc){
-    var N=54,pts=[];
-    for(var i=0;i<=N;i++){var t=i/N;var v=slerp(arc.a,arc.b,t);v=scale(norm(v),1+0.22*Math.sin(Math.PI*t));pts.push(proj(v));}
+        if(q.z>0){if(!s2){ctx.moveTo(q.x,q.y);s2=true;}else ctx.lineTo(q.x,q.y);}else s2=false;}
+      ctx.strokeStyle='rgba(120,130,150,.13)';ctx.stroke();}
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(120,130,150,.18)';ctx.stroke();}
+  function arc(a){var N=54,pts=[];
+    for(var i=0;i<=N;i++){var t=i/N;var v=scl(norm(slerp(a.a,a.b,t)),1+0.22*Math.sin(Math.PI*t));pts.push(proj(v));}
     ctx.beginPath();var st=false;
     for(var j=0;j<pts.length;j++){var p=pts[j];if(p.z>-0.05){if(!st){ctx.moveTo(p.x,p.y);st=true;}else ctx.lineTo(p.x,p.y);}else st=false;}
     ctx.strokeStyle='rgba(91,140,255,.32)';ctx.lineWidth=1;ctx.stroke();
-    // travelling pulse
-    var tt=arc.ph%1;var vp=scale(norm(slerp(arc.a,arc.b,tt)),1+0.22*Math.sin(Math.PI*tt));var pp=proj(vp);
-    if(pp.z>0){ctx.beginPath();ctx.arc(pp.x,pp.y,2.4,0,Math.PI*2);ctx.fillStyle='#7ea6ff';
-      ctx.shadowColor='#5b8cff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;}
-  }
-  function dot(v,r,col,glow){var p=proj(v);if(p.z<=0)return;var a=0.4+0.6*p.z;
-    ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=col;
-    if(glow){ctx.shadowColor=col;ctx.shadowBlur=glow;}ctx.globalAlpha=a;ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}
-
-  function frame(){
-    ctx.clearRect(0,0,W,H);
-    // soft core glow
+    var tt=a.ph%1;var vp=scl(norm(slerp(a.a,a.b,tt)),1+0.22*Math.sin(Math.PI*tt));var pp=proj(vp);
+    if(pp.z>0){ctx.beginPath();ctx.arc(pp.x,pp.y,2.4,0,Math.PI*2);ctx.fillStyle='#7ea6ff';ctx.shadowColor='#5b8cff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;}}
+  function dot(v,r,col,glow){var p=proj(v);if(p.z<=0)return;var al=0.4+0.6*p.z;
+    ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=col;if(glow){ctx.shadowColor=col;ctx.shadowBlur=glow;}
+    ctx.globalAlpha=al;ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}
+  function frame(){ctx.clearRect(0,0,W,H);
     var g=ctx.createRadialGradient(cx,cy,R*0.2,cx,cy,R*1.25);
     g.addColorStop(0,'rgba(91,140,255,.10)');g.addColorStop(1,'rgba(91,140,255,0)');
     ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.25,0,Math.PI*2);ctx.fill();
-    drawGraticule();
-    ARCS.forEach(function(a){drawArc(a);a.ph+=0.0016;});
-    HUBS.forEach(function(h){dot(h,1.8,'#9fb6ee',0);});
-    dot(ORIGIN,3.2,'#7ea6ff',14);
-    if(!reduce)rot+=0.0016;
-    requestAnimationFrame(frame);
-  }
+    grat();ARCS.forEach(function(a){arc(a);a.ph+=0.0016;});
+    HUBS.forEach(function(h){dot(h,1.8,'#9fb6ee',0);});dot(ORIGIN,3.2,'#7ea6ff',14);
+    if(!reduce)rot+=0.0016;requestAnimationFrame(frame);}
   frame();
 
-  /* ---------- live pulse monitor ---------- */
-  var pc=document.getElementById('pulse'), px=pc.getContext('2d');
-  var PW,PH,PDPR,data=[];
-  function presize(){var r=pc.getBoundingClientRect();PDPR=Math.min(window.devicePixelRatio||1,2);
-    PW=r.width;PH=r.height;pc.width=PW*PDPR;pc.height=PH*PDPR;px.setTransform(PDPR,0,0,PDPR,0,0);}
+  /* monitor */
+  var pc=document.getElementById('pulse'),px=pc.getContext('2d');
+  var PW,PH,data=[],base=0.5,val=0.5,COUNT=90;
+  function presize(){var r=pc.getBoundingClientRect();var dp=Math.min(window.devicePixelRatio||1,2);
+    PW=r.width;PH=r.height;pc.width=PW*dp;pc.height=PH*dp;px.setTransform(dp,0,0,dp,0,0);}
   window.addEventListener('resize',presize);presize();
-  var COUNT=90, base=0.5, val=0.5;
   for(var i=0;i<COUNT;i++)data.push(0.5);
   var sig=document.getElementById('sigval');
   function pframe(){
-    if(!reduce){
-      base+=(Math.random()-0.5)*0.04; base=Math.max(0.25,Math.min(0.75,base));
-      val+=(base-val)*0.1+(Math.random()-0.5)*0.06; val=Math.max(0.08,Math.min(0.92,val));
-      data.push(val); if(data.length>COUNT)data.shift();
-      if(sig)sig.textContent=(val>base?'▲ ':'▼ ')+(40+Math.round(val*40))+' nCAC';
-    }
-    px.clearRect(0,0,PW,PH);
-    // baseline grid
-    px.strokeStyle='rgba(120,130,150,.08)';px.lineWidth=1;
+    if(!reduce){base+=(Math.random()-0.5)*0.04;base=Math.max(0.25,Math.min(0.75,base));
+      val+=(base-val)*0.1+(Math.random()-0.5)*0.06;val=Math.max(0.08,Math.min(0.92,val));
+      data.push(val);if(data.length>COUNT)data.shift();
+      if(sig)sig.textContent=(val>base?'▲ ':'▼ ')+(40+Math.round(val*40))+' nCAC';}
+    px.clearRect(0,0,PW,PH);px.strokeStyle='rgba(120,130,150,.08)';px.lineWidth=1;
     for(var y=1;y<4;y++){px.beginPath();px.moveTo(0,PH*y/4);px.lineTo(PW,PH*y/4);px.stroke();}
-    // area + line
-    var step=PW/(COUNT-1);
-    px.beginPath();
-    for(var k=0;k<data.length;k++){var xx=k*step,yy=PH-data[k]*PH*0.86-PH*0.07;
-      if(k===0)px.moveTo(xx,yy);else px.lineTo(xx,yy);}
-    var grd=px.createLinearGradient(0,0,0,PH);
-    grd.addColorStop(0,'rgba(91,140,255,.22)');grd.addColorStop(1,'rgba(91,140,255,0)');
+    var step=PW/(COUNT-1);px.beginPath();
+    for(var k=0;k<data.length;k++){var xx=k*step,yy=PH-data[k]*PH*0.86-PH*0.07;if(k===0)px.moveTo(xx,yy);else px.lineTo(xx,yy);}
+    var grd=px.createLinearGradient(0,0,0,PH);grd.addColorStop(0,'rgba(91,140,255,.22)');grd.addColorStop(1,'rgba(91,140,255,0)');
     px.lineTo(PW,PH);px.lineTo(0,PH);px.closePath();px.fillStyle=grd;px.fill();
-    px.beginPath();
-    for(var m=0;m<data.length;m++){var ax=m*step,ay=PH-data[m]*PH*0.86-PH*0.07;
-      if(m===0)px.moveTo(ax,ay);else px.lineTo(ax,ay);}
+    px.beginPath();for(var m=0;m<data.length;m++){var ax=m*step,ay=PH-data[m]*PH*0.86-PH*0.07;if(m===0)px.moveTo(ax,ay);else px.lineTo(ax,ay);}
     px.strokeStyle='#5b8cff';px.lineWidth=1.6;px.stroke();
-    // leading dot
     var lx=(data.length-1)*step,ly=PH-data[data.length-1]*PH*0.86-PH*0.07;
-    px.beginPath();px.arc(lx,ly,2.6,0,Math.PI*2);px.fillStyle='#9fb6ee';
-    px.shadowColor='#5b8cff';px.shadowBlur=10;px.fill();px.shadowBlur=0;
-    requestAnimationFrame(pframe);
-  }
+    px.beginPath();px.arc(lx,ly,2.6,0,Math.PI*2);px.fillStyle='#9fb6ee';px.shadowColor='#5b8cff';px.shadowBlur=10;px.fill();px.shadowBlur=0;
+    requestAnimationFrame(pframe);}
   pframe();
 })();
 </script>
